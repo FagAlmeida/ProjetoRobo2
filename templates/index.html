@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinais de Trading</title>
+</head>
+<body>
+    <h1>Sinais de Trading</h1>
+    <table border="1">
+        <tr>
+            <th>Moeda</th>
+            <th>Sinal</th>
+            <th>Data e Hora</th>
+        </tr>
+        {% for sinal in sinais %}
+        <tr>
+            <td>{{ sinal.Moeda }}</td>
+            <td>{{ sinal.Sinal }}</td>
+            <td>{{ sinal.datetime }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

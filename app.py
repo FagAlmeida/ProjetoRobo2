@@ -14,6 +14,7 @@ from tkinter import scrolledtext
 import threading
 from imblearn.over_sampling import SMOTE
 from sklearn.preprocessing import StandardScaler
+from flask import Flask, jsonify, render_template
 
 # Configurações para logging
 logging.basicConfig(level=logging.INFO)
@@ -153,6 +154,7 @@ def atualizar_sinais(text_widget):
     else:
         text_widget.insert(tk.END, "Nenhum sinal disponível.")
 
+# Função para exibir a interface gráfica usando Tkinter
 def exibir_janela():
     root = tk.Tk()
     root.title("Sinais de Trading")
@@ -167,5 +169,24 @@ def exibir_janela():
     
     root.mainloop()
 
+# Inicialização do Flask
+app = Flask(__name__)
+
+# Rota principal para exibir os sinais na web
+@app.route('/')
+def index():
+    sinais = coletar_sinais()
+    return render_template('index.html', sinais=sinais)
+
+# Rota para obter sinais em formato JSON
+@app.route('/api/sinais')
+def api_sinais():
+    sinais = coletar_sinais()
+    return jsonify(sinais)
+
 if __name__ == '__main__':
-    exibir_janela()
+    # Para rodar no Flask
+    app.run(debug=True)
+
+    # Para rodar com interface gráfica Tkinter
+    # exibir_janela()
