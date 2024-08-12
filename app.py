@@ -188,5 +188,3 @@ if __name__ == '__main__':
     # Para rodar no Flask
     app.run(debug=True)
 
-    # Para rodar com interface gráfica Tkinter
-    # exibir_janela()
