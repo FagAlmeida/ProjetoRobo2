@@ -1,9 +1,2 @@
-numpy
-pandas
-iqoptionapi
-talib
-scikit-learn
-pytz
-tk
-imbalanced-learn
-Flask
+pandas==2.2.2
+iqoptionapi==0.5
